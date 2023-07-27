@@ -1,4 +1,4 @@
-[submodule "chat"]
-	path = chat
+[submodule "web"]
+	path = web
 	url = https://github.com/hieu22pham/web.git
 
