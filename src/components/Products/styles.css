@@ -1,0 +1,32 @@
+.account__info {
+  position: relative;
+  left: 94vw;
+  top: 20px;
+}
+
+.account__avatar {
+  border: 1px orangered solid;
+}
+
+.account__avatar:hover {
+  cursor: pointer;
+
+}
+
+.button__login {
+  left: -4vw;
+}
+
+.products {
+  margin-left: 30px;
+}
+
+.products__item {
+  /* position: relative; */
+  margin-bottom: 20px;
+}
+
+.products_name {
+  margin-left: 5px;
+}
+
