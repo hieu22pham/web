@@ -1,8 +1,7 @@
 import { UserAddOutlined } from '@ant-design/icons';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { Button, Tooltip, Avatar, Form, Input, Alert } from 'antd';
-import Message from './SideBar/Message';
+import { Button, Tooltip, Avatar, Form, Input, Alert, message } from 'antd';
 import { AppContext } from "../Context/AppProvider"
 import { AuthContext } from '../Context/AthProvider';
 import { addDocument } from '../Login/services';
@@ -148,7 +147,7 @@ export default function ChatWindow() {
           </HeaderStyled>
           <ContentStyled>
             <MessageListStyled ref={messageListRef}>
-              {products.map((mes) => (
+              {/* {products.map((mes) => (
                 <Message
                   key={mes.id}
                   text={mes.text}
@@ -156,7 +155,7 @@ export default function ChatWindow() {
                   displayName={mes.displayName}
                   createdAt={mes.createdAt}
                 />
-              ))}
+              ))} */}
             </MessageListStyled>
             <FormStyled form={form}>
               <Form.Item name='message'>

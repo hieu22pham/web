@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import Sidebar from './SideBar';
 import ChatWindow from './ChatWindow';
-import Message from './SideBar/Message';
+// import Message from './SideBar/Message';
 import { Outlet } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import AdminProducts from './AdminProducts.js';
