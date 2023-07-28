@@ -41,6 +41,7 @@ export default function AuthProvider({ children }) {
           //   navigate('/');
           // }
         } else if (providerId === 'facebook.com') {
+          alert("fb");
           // Người dùng đăng nhập bằng Facebook
           const { displayName, email, uid, photoURL } = user;
           setUser({

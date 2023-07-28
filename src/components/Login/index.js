@@ -17,30 +17,41 @@ function Login() {
   const [password, setPassword] = useState('');
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [showErrorAlert, setShowErrorAlert] = useState(false);
-  const [popupClosed, setPopupClosed] = useState(false);
 
   const handleFbLogin = async () => {
     try {
+      alert("ok")
       const { additionalUserInfo, user } = await auth.signInWithPopup(fbProvider);
       console.log("Logged in user:", user);
 
-      if (!popupClosed) {
-        if (additionalUserInfo?.isNewUser) {
-          console.log("New user detected. Adding to Firestore...");
-          // Try adding the user to Firestore
-          addDocument('users', {
-            displayName: user.displayName,
-            email: user.email,
-            photoURL: user.photoURL,
-            uid: user.uid,
-            providerId: additionalUserInfo.providerId,
-          });
-        }
+      if (additionalUserInfo.isNewUser) {
+        console.log("New user detected. Adding to Firestore...");
+        // Try adding the user to Firestore
+        addDocument('users', {
+          displayName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          uid: user.uid,
+          providerId: additionalUserInfo.providerId,
+        });
       }
+      message.success('Đăng nhập thành công!');
     } catch (error) {
-      console.error("Error during login:", error);
+      // Handle different types of errors
+      if (error.code === 'auth/popup-closed-by-user') {
+        // User closed the popup
+        message.warning('Bạn đã đóng cửa sổ đăng nhập bằng Facebook.');
+      } else if (error.code === 'auth/cancelled-popup-request') {
+        // Popup request was cancelled
+        message.warning('Yêu cầu đăng nhập bằng Facebook đã bị hủy.');
+      } else {
+        // Other errors
+        console.log("Error during login:", error);
+        message.error('Đăng nhập bằng Facebook thất bại. Vui lòng thử lại sau.');
+      }
     }
   };
+
   const onFinish = async (e) => {
     try {
 
