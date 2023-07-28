@@ -17,22 +17,25 @@ function Login() {
   const [password, setPassword] = useState('');
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [showErrorAlert, setShowErrorAlert] = useState(false);
+  const [popupClosed, setPopupClosed] = useState(false);
 
   const handleFbLogin = async () => {
     try {
       const { additionalUserInfo, user } = await auth.signInWithPopup(fbProvider);
       console.log("Logged in user:", user);
 
-      if (additionalUserInfo?.isNewUser) {
-        console.log("New user detected. Adding to Firestore...");
-        // Try adding the user to Firestore
-        addDocument('users', {
-          displayName: user.displayName,
-          email: user.email,
-          photoURL: user.photoURL,
-          uid: user.uid,
-          providerId: additionalUserInfo.providerId,
-        });
+      if (!popupClosed) {
+        if (additionalUserInfo?.isNewUser) {
+          console.log("New user detected. Adding to Firestore...");
+          // Try adding the user to Firestore
+          addDocument('users', {
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+            uid: user.uid,
+            providerId: additionalUserInfo.providerId,
+          });
+        }
       }
     } catch (error) {
       console.error("Error during login:", error);
