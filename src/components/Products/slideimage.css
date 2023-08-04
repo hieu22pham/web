@@ -1,0 +1,115 @@
+.images__home {
+  position: relative;
+  left: 20px;
+  top: 20px;
+  max-width: 710px;
+}
+
+.images__home {
+  width: 100%;
+  overflow: hidden;
+}
+
+.mySwiper {
+  width: inherit;
+}
+
+.images__home--item {
+  /* position: relative; */
+  width: inherit;
+}
+
+.images__home--item img {
+  border-radius: 15px;
+  width: 711px;
+}
+
+.slide-caption {
+  /* position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer; */
+  cursor: pointer;
+}
+
+.images__home--item .swiper-wrapper {
+  display: flex;
+  align-items: center;
+  /* Center the slides vertically */
+  transition-property: transform;
+  /* Enable smooth transitions */
+}
+
+.images__home--item .swiper-slide {
+  width: 100%;
+  /* Ensure each slide occupies the full width */
+}
+
+/* Hide default Swiper pagination dots */
+.images__home--item .swiper-pagination {
+  display: none;
+}
+
+@keyframes slideCaptionAnimation {
+  0% {
+    color: red;
+    /* Màu chữ hiện tại (có thể thay đổi màu tùy chọn) */
+  }
+
+  100% {
+    color: black;
+    /* Màu chữ mới (có thể thay đổi màu tùy chọn) */
+  }
+}
+
+/* Định dạng chữ và chữ đậm cho slide hiện tại */
+.slide-caption {
+  font-weight: bold;
+  /* Chữ đậm */
+  animation: slideCaptionAnimation 0.3s;
+  /* Thời gian chuyển đổi màu (0.3 giây) */
+}
+
+.captions {
+  display: flex;
+}
+
+.active {
+  font-weight: bold;
+  color: orange;
+  /* Các thuộc tính khác của chú thích khi được kích hoạt */
+}
+
+/* Custom navigation buttons (optional) */
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 10;
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+.swiper-button-next {
+  right: 10px;
+}

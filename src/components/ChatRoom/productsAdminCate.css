@@ -1,0 +1,25 @@
+.productsCate__admin {
+  margin-left: -30px;
+}
+
+.productsCate__admin__item {
+  margin-right: 100px;
+  margin-bottom: 25px;
+}
+
+.products__admin_name {}
+
+.btnAddProductCate {
+  margin-top: 60px;
+  margin-left: -35px;
+  border: 1px orangered solid;
+}
+
+.btnAddProductCate:hover {
+  background: orangered;
+  border: 1px black solid;
+}
+
+.btnAddProductCate:hover span {
+  color: #fff;
+}

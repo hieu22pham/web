@@ -5,9 +5,18 @@ import { Row, Col, Image, Space, Button, Avatar, Menu, Dropdown } from 'antd';
 import "./styles.css"
 import { auth } from '../../firebase/config';
 import { AuthContext } from '../Context/AthProvider';
+import AppContext from 'antd/es/app/context';
 import { db } from '../../firebase/config';
 import { useNavigate } from 'react-router-dom';
 import { deleteDocument } from '../Login/services';
+import {
+  UserOutlined,
+  PlayCircleOutlined,
+  CheckOutlined,
+  HighlightOutlined,
+  PlusSquareOutlined
+} from "@ant-design/icons"
+
 
 // Import thêm useEffect nếu bạn chưa import
 
@@ -17,11 +26,24 @@ import { deleteDocument } from '../Login/services';
 // `;
 
 export default function Products() {
+  const { products, setIsAddRoomVisible, setSelectedRoomId } =
+    React.useContext(AppContext);
+  const { categories, setCategories, cate, setCate } =
+    React.useContext(AuthContext);
+
   const navigate = useNavigate([]);
   const [messagesData, setMessagesData] = useState([]);
   const {
     user: { displayName, photoURL },
   } = React.useContext(AuthContext);
+  const handleAddCategories = () => {
+    setIsAddRoomVisible(true);
+    // this.forceUpdate();
+  };
+
+  const handleCategoryClick = (item) => {
+    setCate(item);
+  };
 
   useEffect(() => {
     const messagesRef = db.collection('products');
@@ -74,35 +96,12 @@ export default function Products() {
     </Menu>
   );
 
-  
-
   return (
     <>
-      <div className='account__info'>
-        {displayName ?
-          <Dropdown overlay={menu} trigger={['click']}>
-            <Avatar size="large" className='account__avatar' src={photoURL}>
-              {photoURL ? '' : displayName?.charAt(0)?.toUpperCase()}
-            </Avatar>
-          </Dropdown>
-          : <Button className='button__login' type='text' onClick={handleLogin}>Đăng nhập</Button>}
-        {/* {displayName ? (
-          <Button >
-            Đăng xuất
-          </Button>
-
-        ) : (
-          <Button onClick={handleLogin}>
-            Đăng nhập
-          </Button >
-        )
-        } */}
-      </div>
-      {/* Sử dụng dữ liệu từ state để hiển thị */}
       < div className='products' >
         <Row>
           {messagesData.map((item) => (
-            <Col key={item.id} span="6">
+            <Col key={item.id} span="8">
               <div className='products__item'>
                 <div className='products_name'>
                   <h3 >{item.name}</h3>

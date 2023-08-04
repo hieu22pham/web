@@ -23,6 +23,7 @@ function Login() {
       alert("ok")
       const { additionalUserInfo, user } = await auth.signInWithPopup(fbProvider);
       console.log("Logged in user:", user);
+      navigate("/")
 
       if (additionalUserInfo.isNewUser) {
         console.log("New user detected. Adding to Firestore...");
@@ -60,6 +61,7 @@ function Login() {
       setShowSuccessAlert(true);
       setTimeout(() => { }, 7000);
       setShowSuccessAlert(false);
+      navigate("/admin")
     } catch (error) {
       setShowErrorAlert(true);
     }
@@ -159,12 +161,12 @@ function Login() {
               </Form.Item>
             </Form>
           </Row>
-          <Row className="rowGg" justify={"center"} >
+          {/* <Row className="rowGg" justify={"center"} >
             <Button className='loginGoogle'>Đăng nhập bằng Google</Button>
           </Row>
           <Row justify={"center"} gutter={40}>
             <Button onClick={handleFbLogin}>Đăng nhập bằng Facebook</Button>
-          </Row>
+          </Row> */}
         </div>
       </div >
     </>

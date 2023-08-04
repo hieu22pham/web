@@ -16,10 +16,10 @@ export const deleteDocument = (collection, docId) => {
     return;
   }
 
-  if (typeof collection !== 'string') {
-    alert("Tên bộ sưu tập phải là một chuỗi.");
-    return;
-  }
+  // if (typeof collection !== 'string') {
+  //   alert("Tên bộ sưu tập phải là một chuỗi.");
+  //   return;
+  // }
 
   // if (typeof docId !== 'string') {
   //   alert("ID của tài liệu phải là một chuỗi.");

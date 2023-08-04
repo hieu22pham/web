@@ -4,6 +4,7 @@ import { auth } from '../../firebase/config';
 import { fbProvider } from '../Login';
 import { Spin } from 'antd';
 import { Location } from 'react-router-dom';
+import { db } from '../../firebase/config';
 
 export const AuthContext = React.createContext();
 
@@ -12,6 +13,23 @@ export default function AuthProvider({ children }) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
+  const [categories, setCategories] = useState([]);
+  const [cate, setCate] = useState('');
+  const [slideImages, setSlideImages] = useState('');
+
+  React.useEffect(() => {
+    const data = db.collection('categories');
+
+    data
+      .get()
+      .then((querySnapshot) => {
+        const data = querySnapshot.docs.map((doc) => doc.data());
+        setCategories(data); // Lưu trữ dữ liệu vào state
+      })
+      .catch((error) => {
+        console.error('Error getting messages:', error);
+      });
+  }, []);
 
   React.useEffect(() => {
     // Kiểm tra trạng thái đăng nhập của người dùng
@@ -30,9 +48,19 @@ export default function AuthProvider({ children }) {
             photoURL,
           });
           setIsLoading(false);
-          navigate('/');
+          // if (displayName) {
+          if ((location.pathname === '/admin')) {
+            navigate('/admin');
+          }
+          // }
+
           if (location.pathname === '/admin/products') {
+            alert("hii")
             navigate('/admin/products');
+          }
+          if (location.pathname === `/admin/${cate.category}`) {
+            console.log("hi")
+            navigate(`/admin/${cate.category}`);
           }
           // if (location.pathname === '/') {
           //   navigate('/');
@@ -51,16 +79,27 @@ export default function AuthProvider({ children }) {
             photoURL,
           });
           setIsLoading(false);
-          navigate('/home');
+          if ((location.pathname === '/')) {
+            navigate('/');
+          }
+          if (location.pathname === `/mobile/${cate?.category}.html`) {
+            console.log("hi")
+            navigate(`/mobile/${cate?.category}.html`);
+          }
         }
       }
       else {
         // reset user info
         setUser({});
         setIsLoading(false);
-        navigate('/home');
+        if (!user && (location.pathname === '/')) {
+          navigate('/');
+        }
         if (!user && (location.pathname === '/login')) {
           navigate('/login');
+        }
+        if (!user && (location.pathname === `/mobile/${cate?.category}`)) {
+          navigate(`/mobile/${cate?.category}`);
         }
       }
 
@@ -73,17 +112,19 @@ export default function AuthProvider({ children }) {
     };
   }, [navigate]);
 
-  React.useEffect(() => {
-    // Kiểm tra nếu người dùng chưa đăng nhập và đang ở trang "/admin" hoặc "/login"
-    // thì chuyển hướng về trang "/" để cho phép truy cập vào các trang này
-    if (!user && (location.pathname === '/admin' || location.pathname === '/login')) {
-      navigate('/');
-    }
-  }, [user, location, navigate]);
+  // React.useEffect(() => {
+  //   // Kiểm tra nếu người dùng chưa đăng nhập và đang ở trang "/admin" hoặc "/login"
+  //   // thì chuyển hướng về trang "/" để cho phép truy cập vào các trang này
+  //   if (!user && (location.pathname === '/admin' || location.pathname === '/login')) {
+  //     navigate('/');
+  //   }
+  // }, [user, location, navigate]);
 
   return (
-    <AuthContext.Provider value={{ user }}>
+    <AuthContext.Provider value={{ user, categories, cate, setCate }}>
       {isLoading ? <Spin style={{ position: 'fixed', inset: 0 }} /> : children}
     </AuthContext.Provider>
   );
 }
+
+export const useAuth = () => React.useContext(AuthContext);

@@ -146,13 +146,20 @@ export default function ChatWindow() {
               </Button>
               <Avatar.Group size='small' maxCount={2}>
                 {members.map((member) => (
-                  <Tooltip title={member.displayName} key={member.id}>
-                    <Avatar src={member.photoURL}>
-                      {member.photoURL
-                        ? ''
-                        : member.displayName?.charAt(0)?.toUpperCase()}
-                    </Avatar>
-                  </Tooltip>
+                  <div className='product_name' key={member.id}>
+                    <Dropdown overlay={menu} trigger={['click']}>
+                      <Avatar size="large" className='account__avatar' src={photoURL}>
+                        {photoURL ? '' : displayName?.charAt(0)?.toUpperCase()}
+                      </Avatar>
+                    </Dropdown>
+                  </div>
+                  // <Tooltip title={member.displayName} key={member.id}>
+                  //   <Avatar src={member.photoURL}>
+                  //     {member.photoURL
+                  //       ? ''
+                  //       : member.displayName?.charAt(0)?.toUpperCase()}
+                  //   </Avatar>
+                  // </Tooltip>
                 ))}
               </Avatar.Group>
             </ButtonGroupStyled>

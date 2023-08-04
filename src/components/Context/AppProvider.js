@@ -17,20 +17,20 @@ export default function AppProvider({ children }) {
   } = React.useContext(AuthContext);
 
   // No need to use any specific condition to fetch all products
-  const a = useFirestore('products');
-  const [products, setProducts] = useState(a)
-  console.log(a);
+  const [products, setProducts] = useState([])
 
   React.useEffect(() => {
-    const unsubscribe = db.collection('products').onSnapshot((snapshot) => {
-      const productsData = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setProducts(productsData);
-    });
+    const data = db.collection('products');
 
-    return () => unsubscribe();
+    data
+      .get()
+      .then((querySnapshot) => {
+        const data = querySnapshot.docs.map((doc) => doc.data());
+        setProducts(data); // Lưu trữ dữ liệu vào state
+      })
+      .catch((error) => {
+        console.error('Error getting messages:', error);
+      });
   }, []);
 
   const selectedRoom = React.useMemo(

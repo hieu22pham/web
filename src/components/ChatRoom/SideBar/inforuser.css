@@ -1,0 +1,25 @@
+.ant-menu-root {
+  border: 1px orangered solid !important;
+  margin-left: 20px;
+  margin-top: 20px;
+  border-radius: 15px;
+  width: 230px;
+}
+
+.ant-menu-root .ant-menu-item:hover {
+  border: 1px black solid !important;
+  /* margin-left: -3px; */
+}
+
+.ant-menu .ant-menu-item:hover a::before {
+  position: absolute;
+  inset: 0;
+  /* background-color: #fff; */
+  /* color: #fff; */
+  content: "";
+}
+
+.accountAdmin__info {
+  position: absolute;
+  right: 0;
+}
