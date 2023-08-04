@@ -109,6 +109,7 @@
 }
 
 .products__main--item {
+  margin-bottom: 30px;
   cursor: pointer;
   position: relative;
   width: 232px;
