@@ -22,6 +22,7 @@ function SlideImageHome() {
         .then((querySnapshot) => {
           const products = querySnapshot.docs.map((doc) => doc.data());
           setProductsData(products);
+          setLength(querySnapshot.size);
         })
         .catch((error) => {
           console.error('Error getting messages:', error);
@@ -72,12 +73,6 @@ function SlideImageHome() {
     if (swiperRef.current && swiperRef.current.swiper) {
       swiperRef.current.swiper.on('slideChange', handleSlideChange);
     }
-
-    const swiperInstance = swiperRef.current.swiper;
-    const slidesCount = swiperInstance.slides.length;
-
-
-    setLength(slidesCount);
   }, []);
 
   const slides = productsData.map((item, index) => (
@@ -163,7 +158,7 @@ function SlideImageHome() {
             {productsData.map((item, index) => (
               item.name &&
               <div className={`border-caption  ${currentSlide === index ? 'active' : ''}
-              ${length === index ? 'last' : ''}`}
+              ${length === (index + 1) ? 'last' : ''}`}
                 onClick={() => handleCaptionClick(index)}
               >
                 <div className={`slide-caption ${currentSlide === index ? 'active' : ''}`}
