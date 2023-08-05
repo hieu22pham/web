@@ -143,36 +143,33 @@ const AdminProducts = () => {
         </Form>
       </Modal>
       {/* <Pagination simple defaultCurrent={1} total={50} pageSize={3} /> */}
-      < div className='images__admin' >
-        <Row>
-          {productsData.map((item) => (
 
-            <Col key={item.id} span="24">
-              <Modal
-                title="Thông báo!"
-                visible={isModalOpen}
-                onOk={() => handleOkDelete(item.createdAt)}
-                onCancel={handleCancelDelete}
-                confirmLoading={loading}
-                footer={[
-                  <Button key="back" onClick={handleCancelDelete}>
-                    Hủy
-                  </Button>,
-                  <Button key="submit" type="primary" loading={loading} onClick={handleOkDelete}>
-                    Đồng ý
-                  </Button>,
-                ]}
-              >
-                <p>Bạn có chắc muốn xóa sản phẩm?</p>
-              </Modal>
-              {
-                item.name &&
-                <div className='images__admin__item'>
-                  <div className='images__admin_name'>
-                    <h3 >{item.name}</h3>
-                  </div>
-                  <button className='btn_delete' onClick={() => handleDeleteDoc(item.createdAt)}> Xóa</button>
-                  {/* <Image
+      < div className='images__admin' >
+        {productsData.map((item) => (
+          item.name &&
+          <div className='images__admin__item' key={item.createdAt}>
+            <div className='images__admin_name'>
+              <h3 >{item.name}</h3>
+            </div>
+            <Modal
+              title="Thông báo!"
+              visible={isModalOpen}
+              onOk={() => handleOkDelete(item.createdAt)}
+              onCancel={handleCancelDelete}
+              confirmLoading={loading}
+              footer={[
+                <Button key="back" onClick={handleCancelDelete}>
+                  Hủy
+                </Button>,
+                <Button key="submit" type="primary" loading={loading} onClick={handleOkDelete}>
+                  Đồng ý
+                </Button>,
+              ]}
+            >
+              <p>Bạn có chắc muốn xóa sản phẩm?</p>
+            </Modal>
+            <button className='btn_delete' onClick={() => handleDeleteDoc(item.createdAt)}> Xóa</button>
+            {/* <Image
                     width={650}
                     height={300}
                     src={item.photoURL}
@@ -188,12 +185,13 @@ const AdminProducts = () => {
                         <Space size={0} className="toolbar-wrapper">
                         </Space>),
                     }} /> */}
-                  <img src={item.photoURL} />
-                </div>
-              }
-            </Col >
-          ))}
-        </Row>
+            <div className='img'>
+              <img src={item.photoURL} />
+            </div>
+
+          </div>
+
+        ))}
       </div>
       {/* <Pagination disabled simple defaultCurrent={2} total={50} /> */}
     </>);

@@ -1,14 +1,18 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore from "swiper";
 
-import "./slideimage.css";
+import "./slideimageHome.css";
 import { db } from "../../firebase/config";
 import 'swiper/css/autoplay'
+import { CaretRightOutlined, CaretLeftOutlined } from "@ant-design/icons"
 
 function SlideImageHome() {
   const messagesRef = db.collection('SlideImage');
   const [productsData, setProductsData] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [length, setLength] = useState(0);
+
   // const swiperRef = React.useRef(null);
 
   useEffect(() => {
@@ -35,7 +39,7 @@ function SlideImageHome() {
 
       const swiperInstance = swiperRef.current.swiper;
       const currentIndex = swiperInstance.activeIndex;
-      setCurrentSlide(currentIndex)
+      // setCurrentSlide(currentIndex)
     }
   }, [currentSlide]);
 
@@ -68,6 +72,12 @@ function SlideImageHome() {
     if (swiperRef.current && swiperRef.current.swiper) {
       swiperRef.current.swiper.on('slideChange', handleSlideChange);
     }
+
+    const swiperInstance = swiperRef.current.swiper;
+    const slidesCount = swiperInstance.slides.length;
+
+
+    setLength(slidesCount);
   }, []);
 
   const slides = productsData.map((item, index) => (
@@ -107,6 +117,26 @@ function SlideImageHome() {
     setCurrentSlide(index);
   };
 
+  const handleNextButtonClick = () => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      const swiperInstance = swiperRef.current.swiper;
+      const slidesCount = swiperInstance.slides.length;
+      // if (swiperInstance >= slidesCount) {
+      //   setCurrentSlide(0)
+      // }
+      // else { swiperInstance.slideNext(); } // Move to the next slide
+      // setCurrentSlide(swiperInstance);
+
+      swiperInstance.slideNext();
+    }
+  };
+
+  const handlePrevButtonClick = () => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      const swiperInstance = swiperRef.current.swiper;
+      swiperInstance.slidePrev(); // Move to the previous slide
+    }
+  };
   return (
     <>
       <div className="images__home">
@@ -123,19 +153,28 @@ function SlideImageHome() {
               </SwiperSlide >
             ))}
           </Swiper>
-          <div className="swiper-button-next" />
-          <div className="swiper-button-prev" />
+          <div className="swiper-button-next" onClick={handleNextButtonClick} >
+            <CaretRightOutlined style={{ fontSize: "24px", marginLeft: "5px" }} />
+          </div>
+          <div className="swiper-button-prev" onClick={handlePrevButtonClick} >
+            <CaretLeftOutlined style={{ fontSize: "24px", marginRight: "5px" }} />
+          </div>
           <div className="captions">
             {productsData.map((item, index) => (
               item.name &&
-              <div className={`slide-caption ${currentSlide === index ? 'active' : ''}`}
-                onClick={() => handleCaptionClick(index)}>
-                {item.name}
+              <div className={`border-caption  ${currentSlide === index ? 'active' : ''}
+              ${length === index ? 'last' : ''}`}
+                onClick={() => handleCaptionClick(index)}
+              >
+                <div className={`slide-caption ${currentSlide === index ? 'active' : ''}`}
+                >
+                  {item.name}
+                </div>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 }

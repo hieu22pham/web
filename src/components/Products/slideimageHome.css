@@ -1,8 +1,10 @@
 .images__home {
+  /* border-radius: 15px;
+  border: 3px #ddd solid; */
   position: relative;
-  left: 20px;
+  left: 25px;
   top: 20px;
-  max-width: 710px;
+  max-width: 712px;
 }
 
 .images__home {
@@ -16,11 +18,15 @@
 
 .images__home--item {
   /* position: relative; */
-  width: inherit;
+  /* width: 715px; */
+  width: 100%;
+  height: 100%;
 }
 
 .images__home--item img {
-  border-radius: 15px;
+  /* overflow-clip-margin: content-box;
+  overflow: clip; */
+  height: 100%;
   width: 711px;
 }
 
@@ -70,16 +76,47 @@
 }
 
 /* Định dạng chữ và chữ đậm cho slide hiện tại */
+.border-caption {
+  width: 20%;
+  border-right: 1px black solid;
+  height: 100%;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+
 .slide-caption {
+  position: absolute;
+  top: 5px;
   font-weight: bold;
+  /* position: absolute; */
   /* Chữ đậm */
   animation: slideCaptionAnimation 0.3s;
   /* Thời gian chuyển đổi màu (0.3 giây) */
+  margin-left: 30px;
 }
+
+.slide-caption:hover {}
+
 
 .captions {
   display: flex;
+  width: 99%;
+  /* border: 1px black solid; */
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0 2px 2px 2px rgba(22, 22, 22, 0.2),
+    0 1px 2px 0 rgba(48, 50, 53, 0.1);
+  height: 40px;
+  position: relative;
+  top: -4px;
+  left: 1px;
 }
+
+.captions .last {
+  border-right: none;
+}
+
 
 .active {
   font-weight: bold;
@@ -107,9 +144,9 @@
 }
 
 .swiper-button-prev {
-  left: 10px;
+  left: 2px;
 }
 
 .swiper-button-next {
-  right: 10px;
+  right: 1px;
 }
