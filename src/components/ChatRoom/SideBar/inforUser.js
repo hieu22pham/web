@@ -30,6 +30,7 @@ export default function UserInfo() {
 
   const handleCategoryClick = (item) => {
     setCate(item);
+    localStorage.setItem('Cate', JSON.stringify(item));
   };
 
   // useEffect(() => {

@@ -44,8 +44,8 @@ function Category() {
   const handleOk = () => {
     form.validateFields()
       .then((values) => {
-        const newProductData = { ...form.getFieldsValue(), category: [cate.category] };
-        addDocument(cate.category, { ...form.getFieldsValue(), category: [cate.category] });
+        const newProductData = { ...form.getFieldsValue(), category: cate.category };
+        addDocument(cate.category, { ...form.getFieldsValue(), category: cate.category });
         // addDocument("products", { ...form.getFieldsValue(), category: [cate.category] });
         if (cate.category !== '') {
           const categoryRef = db.collection(cate.category);
@@ -119,6 +119,16 @@ function Category() {
           >
             <Input placeholder='Nhập tên sản phẩm' required />
           </Form.Item>
+          <Form.Item label='Tiêu đề' name='title'
+            rules={[
+              {
+                required: true,
+                message: 'Vui lòng nhập tiêu đề!',
+              },
+            ]}
+          >
+            <Input placeholder='Nhập tiêu đề sản phẩm' required />
+          </Form.Item>
           <Form.Item label='URL ảnh' name='photoURL'
             rules={[
               {
@@ -180,10 +190,10 @@ function Category() {
                   </Button>,
                 ]}
               ></Modal>
-              {item.name && (
+              {item.title && (
                 <div className='productsCate__admin__item'>
                   <div className='productsCate__admin_name'>
-                    <h3>{item.name}</h3>
+                    <h3>{item.title}</h3>
                   </div>
                   <button className='btn_delete' onClick={() => handleDeleteDoc(item)}>Xóa</button>
                   <div className='productsCate__admin_image'>

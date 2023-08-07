@@ -34,13 +34,11 @@ function SlideImageHome() {
 
 
   useEffect(() => {
-    // Ensure the Swiper component updates to the currentSlide value
     if (swiperRef.current && swiperRef.current.swiper) {
       var a = swiperRef.current.swiper.slideTo(currentSlide);
 
       const swiperInstance = swiperRef.current.swiper;
       const currentIndex = swiperInstance.activeIndex;
-      // setCurrentSlide(currentIndex)
     }
   }, [currentSlide]);
 
@@ -108,7 +106,6 @@ function SlideImageHome() {
   const swiperRef = React.useRef(null);
 
   const handleCaptionClick = (index) => {
-    // Jump to the corresponding slide when clicking on a slide caption
     setCurrentSlide(index);
   };
 
@@ -137,7 +134,6 @@ function SlideImageHome() {
       <div className="images__home">
         <div className="images__home--item">
           <Swiper {...swiperSettings} initialSlide={currentSlide} ref={swiperRef}
-            // modules={Autoplay} 
             autoplay={true}>
             {productsData.map((item, index) => (
               item.name &&

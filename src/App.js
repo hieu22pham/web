@@ -18,9 +18,9 @@ import SlideImage from './components/ChatRoom/SlideImage';
 
 function App() {
   // Move the useAuth hook inside the App component
-  const { cate } = React.useContext(AuthContext) || {};
+  const { cate, textProduct } = React.useContext(AuthContext) || {};
 
-  console.log(cate);
+  console.log(cate, textProduct);
 
   return (
     <AuthProvider> {/* Wrap the entire application with AuthProvider */}
@@ -29,8 +29,9 @@ function App() {
           <Route path="/" element={<Home />} >
             <Route path="/" element={<OutletHome />} />
             <Route path={`/mobile/:${cate?.category}`} element={<OutletProduct />} />
-            {/* <Route path={`mobile/${cate?.category}`} element={<ShowProductDetail />} /> */}
+            <Route path={`/:${textProduct}`} element={<ShowProductDetail />} />
           </Route>
+
           <Route path="/admin" element={<ChatRoom />} >
             <Route path="products" element={<AdminProducts />} />
             <Route path={`/admin/:${cate?.category}`} element={<Category />} />

@@ -17,14 +17,6 @@ import {
   PlusSquareOutlined
 } from "@ant-design/icons"
 
-
-// Import thêm useEffect nếu bạn chưa import
-
-// ...
-// const WrapperStyled = styled.div`
-//   height: 100vh;
-// `;
-
 export default function Products() {
   const { products, setIsAddRoomVisible, setSelectedRoomId } =
     React.useContext(AppContext);
@@ -38,7 +30,6 @@ export default function Products() {
   } = React.useContext(AuthContext);
   const handleAddCategories = () => {
     setIsAddRoomVisible(true);
-    // this.forceUpdate();
   };
 
   const handleCategoryClick = (item) => {
@@ -52,7 +43,7 @@ export default function Products() {
       .get()
       .then((querySnapshot) => {
         const messagesData = querySnapshot.docs.map((doc) => doc.data());
-        setMessagesData(messagesData); // Lưu trữ dữ liệu vào state
+        setMessagesData(messagesData);
       })
       .catch((error) => {
         console.error('Error getting messages:', error);
@@ -80,9 +71,7 @@ export default function Products() {
 
   const handleMenuClick = (e) => {
     if (e.key === 'profile') {
-      // Xử lý khi người dùng chọn "Thông tin cá nhân"
     } else if (e.key === 'settings') {
-      // Xử lý khi người dùng chọn "Cài đặt"
     } else if (e.key === 'logout') {
       handleLogout();
     }

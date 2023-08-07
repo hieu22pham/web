@@ -48,17 +48,13 @@
 .images__home--item .swiper-wrapper {
   display: flex;
   align-items: center;
-  /* Center the slides vertically */
   transition-property: transform;
-  /* Enable smooth transitions */
 }
 
 .images__home--item .swiper-slide {
   width: 100%;
-  /* Ensure each slide occupies the full width */
 }
 
-/* Hide default Swiper pagination dots */
 .images__home--item .swiper-pagination {
   display: none;
 }
@@ -66,16 +62,13 @@
 @keyframes slideCaptionAnimation {
   0% {
     color: red;
-    /* Màu chữ hiện tại (có thể thay đổi màu tùy chọn) */
   }
 
   100% {
     color: black;
-    /* Màu chữ mới (có thể thay đổi màu tùy chọn) */
   }
 }
 
-/* Định dạng chữ và chữ đậm cho slide hiện tại */
 .border-caption {
   width: 20%;
   border-right: 1px black solid;
@@ -121,10 +114,8 @@
 .active {
   font-weight: bold;
   color: orange;
-  /* Các thuộc tính khác của chú thích khi được kích hoạt */
 }
 
-/* Custom navigation buttons (optional) */
 .swiper-button-prev,
 .swiper-button-next {
   position: absolute;

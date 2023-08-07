@@ -15,6 +15,8 @@ export default function AuthProvider({ children }) {
   const location = useLocation();
   const [categories, setCategories] = useState([]);
   const [cate, setCate] = useState('');
+  const [textProduct, setTextProduct] = useState('');
+  const [product, setProduct] = useState('');
   const [slideImages, setSlideImages] = useState('');
 
   React.useEffect(() => {
@@ -100,6 +102,8 @@ export default function AuthProvider({ children }) {
         }
         if (!user && (location.pathname === `/mobile/${cate?.category}`)) {
           navigate(`/mobile/${cate?.category}`);
+        } if (!user && (location.pathname === `/${textProduct}`)) {
+          navigate(`/${textProduct}`);
         }
       }
 
@@ -121,7 +125,10 @@ export default function AuthProvider({ children }) {
   // }, [user, location, navigate]);
 
   return (
-    <AuthContext.Provider value={{ user, categories, cate, setCate }}>
+    <AuthContext.Provider value={{
+      user, categories, cate, setCate, product, setProduct
+      , textProduct, setTextProduct
+    }}>
       {isLoading ? <Spin style={{ position: 'fixed', inset: 0 }} /> : children}
     </AuthContext.Provider>
   );
