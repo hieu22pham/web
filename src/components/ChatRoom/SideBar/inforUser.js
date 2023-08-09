@@ -18,7 +18,7 @@ import "./inforuser.css"
 export default function UserInfo() {
   const { products, setIsAddRoomVisible, setSelectedRoomId } =
     React.useContext(AppContext);
-  const { categories, setCategories, cate, setCate } =
+  const { categories, setCategories, cate, setCate, setUser } =
     React.useContext(AuthContext);
 
   const navigate = useNavigate([])
@@ -123,10 +123,13 @@ export default function UserInfo() {
     auth.signOut()
       .then(() => {
         navigate('/login');
+        // setUser({});
+        console.log(displayName);
       })
       .catch((error) => {
         console.error('Error signing out:', error);
       });
+
     console.log(displayName);
   };
 

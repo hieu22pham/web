@@ -54,6 +54,7 @@
 .orderProduct .inner-wrap {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .orderProduct--pay {

@@ -92,6 +92,7 @@ function Category() {
     setLoading(false);
     setIsModalOpen(false);
   };
+  
 
   const handleCancelDelete = () => {
     setIsModalOpen(false);

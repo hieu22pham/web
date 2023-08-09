@@ -1,0 +1,259 @@
+.category__main {
+  margin-bottom: 30px;
+  position: relative;
+  top: 40px;
+  left: 30px;
+}
+
+.allCate--main {
+  display: flex;
+  position: absolute;
+  right: 50px;
+}
+
+.category__main--item {
+  right: 15px;
+  margin-left: 20px;
+  width: 85px;
+  border: 1px orangered solid;
+}
+
+.category__main--item:hover {
+  background: orangered;
+}
+
+.category__main--item:hover span {
+  color: #fff;
+}
+
+
+.products__main {
+  position: relative;
+  left: 30px;
+}
+
+.products__main--item {
+  margin-bottom: 30px;
+  cursor: pointer;
+  position: relative;
+  width: calc((100vw - 15px*4 - 35px*2)/5);
+  height: 456px;
+  /* border: 1px black solid; */
+  box-shadow: 0 1px 2px 0 rgba(48, 50, 53, 0.1), 0 2px 6px 2px rgba(18, 20, 21, 0.15);
+  border-radius: 15px;
+  margin-right: 15px;
+}
+
+.products__main--item .image__product--main {
+  position: absolute;
+  left: 35px;
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  top: 30px;
+}
+
+.products__main--item h3 {
+  position: absolute;
+  left: 15px;
+  top: 205px;
+}
+
+.products__main--item .price {
+  position: absolute;
+  top: 280px;
+  left: 15px;
+}
+
+.products__main--item .priceDiscount {
+  color: red;
+}
+
+.products__main--item .priceOriginal {
+  position: absolute;
+  left: 120px;
+  text-decoration: line-through;
+  color: #707070;
+}
+
+.products__main--item .badge {
+  position: absolute;
+  top: 0;
+  /* left: 0; */
+  margin-left: auto;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 19px;
+  border-bottom-left-radius: 19px;
+}
+
+
+@media(max-width: 1200px) {
+  .category__main {
+    margin-bottom: 30px;
+    top: 40px;
+    left: 30px;
+  }
+
+  .allCate--main {
+
+    right: 50px;
+  }
+
+  .category__main--item {}
+
+  .category__main--item:hover {}
+
+  .products__main {}
+
+  .products__main--item {
+    width: calc((100vw - 15px*3 - 37px*2)/4);
+    height: 456px;
+    margin-right: 15px;
+  }
+
+  .products__main--item .image__product--main {}
+
+  .products__main--item h3 {}
+
+  .products__main--item .price {}
+
+  .products__main--item .priceDiscount {}
+
+  .products__main--item .priceOriginal {
+    left: 120px;
+  }
+
+  .products__main--item .badge {}
+}
+
+@media(max-width: 992px) {
+  .category__main {}
+
+  .allCate--main {}
+
+  .category__main--item {}
+
+  .category__main--item:hover {}
+
+  .products__main {}
+
+  .products__main--item {
+    width: calc((100vw - 15px*3 - 32px*2)/3);
+    height: 456px;
+    margin-right: 15px;
+  }
+
+  .products__main--item .image__product--main {}
+
+  .products__main--item h3 {}
+
+  .products__main--item .price {}
+
+  .products__main--item .priceDiscount {
+    color: red;
+  }
+
+  .products__main--item .priceOriginal {}
+
+  .products__main--item .badge {}
+}
+
+@media(max-width: 768px) {
+  .category__main {}
+
+  .allCate--main {}
+
+  .category__main--item {}
+
+  .category__main--item:hover {}
+
+  .products__main {}
+
+  .products__main--item {
+    width: calc((100vw - 15px*2 - 35px*2)/3);
+    height: 456px;
+    margin-right: 15px;
+  }
+
+  .products__main--item .image__product--main {}
+
+  .products__main--item h3 {}
+
+  .products__main--item .price {}
+
+  .products__main--item .priceDiscount {}
+
+  .products__main--item .priceOriginal {
+    left: 100px;
+  }
+
+  .products__main--item .badge {}
+}
+
+@media(max-width: 723px) {
+  .category__main {}
+
+  .allCate--main {}
+
+  .category__main--item {}
+
+  .category__main--item:hover {}
+
+  .products__main {}
+
+  .products__main--item {
+    width: calc((100vw - 15px - 35px*2)/2);
+    height: 456px;
+    margin-right: 15px;
+  }
+
+  .products__main--item .image__product--main {}
+
+  .products__main--item h3 {}
+
+  .products__main--item .price {}
+
+  .products__main--item .priceOriginal {
+    left: 115px;
+  }
+
+  .products__main--item .badge {}
+}
+
+@media(max-width: 522px) {
+  .category__main {}
+
+  .allCate--main {
+    right: 20px;
+  }
+
+  .category__main--item {}
+
+  .category__main--item:hover {}
+
+  .products__main {}
+
+  .products__main--item {
+    /* width: calc((100vw - 15px*3 - 37px*2)/4); */
+    height: 456px;
+    margin-right: 15px;
+  }
+
+  .products__main--item .image__product--main {}
+
+  .products__main--item h3 {}
+
+  .products__main--item .price {
+    left: 3px;
+  }
+
+  .products__main--item .priceDiscount {}
+
+  .products__main--item .priceOriginal {
+    left: 120px;
+  }
+
+  .products__main--item .badge {}
+}

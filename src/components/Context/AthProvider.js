@@ -70,6 +70,7 @@ export default function AuthProvider({ children }) {
           // if (location.pathname === '/') {
           //   navigate('/');
           // }
+          console.log(user)
         } else if (providerId === 'facebook.com') {
           alert("fb");
           // Người dùng đăng nhập bằng Facebook
@@ -92,7 +93,7 @@ export default function AuthProvider({ children }) {
       }
       else {
         // reset user info
-        setUser({});
+        // setUser({});
         setIsLoading(false);
         if (!user && (location.pathname === '/')) {
           navigate('/');
@@ -126,7 +127,7 @@ export default function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={{
-      user, categories, cate, setCate, product, setProduct
+      user, setUser, categories, cate, setCate, product, setProduct
       , textProduct, setTextProduct
     }}>
       {isLoading ? <Spin style={{ position: 'fixed', inset: 0 }} /> : children}

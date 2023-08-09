@@ -3,7 +3,7 @@
   border: 3px #ddd solid; */
   position: relative;
   left: 25px;
-  top: 20px;
+  top: 5px;
   max-width: 712px;
 }
 
@@ -28,6 +28,8 @@
   overflow: clip; */
   height: 100%;
   width: 711px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .slide-caption {
@@ -94,7 +96,7 @@
 
 .captions {
   display: flex;
-  width: 99%;
+  width: calc(99% + 5px);
   /* border: 1px black solid; */
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;

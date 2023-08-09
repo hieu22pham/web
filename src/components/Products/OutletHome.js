@@ -13,6 +13,7 @@ import {
   PlusSquareOutlined
 } from "@ant-design/icons"
 import { AppContext } from '../Context/AppProvider';
+import "./outletHome.css"
 
 function OutletHome() {
   const { categoryId } = useParams();

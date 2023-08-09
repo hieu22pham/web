@@ -7,7 +7,7 @@ import "./showProductDetail.css"
 
 function ShowProductDetail() {
   const navigate = useNavigate([]);
-  const { product, cate, setCate } =
+  const { user, product, cate, setCate } =
     React.useContext(AuthContext);
 
   const handleHome = () => {
@@ -33,6 +33,16 @@ function ShowProductDetail() {
     }
   }
 
+  const handlePay = () => {
+    if (user) {
+      alert("Yes")
+      console.log(user)
+
+    } else {
+      navigate("/login");
+      alert("No")
+    }
+  }
 
   return (
     <>
@@ -54,8 +64,8 @@ function ShowProductDetail() {
           <h2 className='product__content--name'>{product.name}</h2>
           <span>Giá ưu đãi: {formatCurrency(product.priceOriginal)}</span>
           <div className='orderProduct'>
-            <div className='inner-wrap'>
-              <div className='orderProduct--pay'>
+            <div className='inner-wrap' onClick={handlePay}>
+              <div className='orderProduct--pay' >
                 <h2>MUA NGAY</h2>
                 <p>(Giao nhanh từ 2 giờ hoặc nhận tại cửa hàng)</p>
               </div>
